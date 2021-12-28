@@ -16,8 +16,8 @@ if [ -z "$GITHUB_TOKEN" ]; then
   msg='deploy'
   githubUrl=git@github.com:godx-18/godx-18.github.io.git vuepress
 else
-  msg='来自github actions的自动部署'
-  githubUrl=https://godx-18.github.io
+  # msg='来自github actions的自动部署'
+  # githubUrl=https://godx-18.github.io
   git config --global user.name "zx"
   git config --global user.email "1046529973@qq.com"
 fi

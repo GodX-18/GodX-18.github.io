@@ -1,3 +1,14 @@
+---
+title: Parcel
+icon: categoryselected
+order: 1
+category:
+  - 前端
+tag:
+  - 模块化
+  - Parcel
+---
+
 ## 快速入门
 
 ### 安装 gulp 命令行工具

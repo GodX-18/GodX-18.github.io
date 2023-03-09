@@ -1,3 +1,14 @@
+---
+title: NodeJs
+icon: categoryselected
+order: 2
+category:
+  - 前端
+tag:
+  - 模块化
+  - Parcel
+---
+
 ## V8 - JavaScript 引擎
 
 * V8 是驱动 Google Chrome 的 JavaScript 引擎的名称

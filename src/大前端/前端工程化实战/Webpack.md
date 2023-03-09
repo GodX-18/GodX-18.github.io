@@ -1,7 +1,7 @@
 ---
 title: Webpack 打包
 icon: categoryselected
-order: 2
+order: 5
 category:
   - 前端
 tag:

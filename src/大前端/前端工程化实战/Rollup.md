@@ -1,7 +1,7 @@
 ---
 title: Rollup
 icon: categoryselected
-order: 2
+order: 6
 category:
   - 前端
 tag:

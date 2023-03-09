@@ -1,3 +1,13 @@
+---
+title: ECMAScript的新特性
+icon: leaf
+date: 2023-03-09
+order: 1
+category:
+  - JS
+tag:
+  - ES6
+---
 ## var 、let 和 const
 
 

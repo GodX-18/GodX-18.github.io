@@ -4,8 +4,9 @@ layout: Blog
 icon: home
 title: Home
 heroImage: /long.png
+bgImage: http://file.mo7.cc/api/public/bz
 heroText: 𝒢𝑜𝒹𝒳
-heroFullScreen: false
+heroFullScreen: true
 tagline: 生而无畏，战至终章
 projects:
   - icon: friend

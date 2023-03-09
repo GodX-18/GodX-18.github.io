@@ -4,7 +4,7 @@ import { zhSidebar } from "./sidebar/index.js";
 
 export default hopeTheme({
   hostname: "https://mister-hope.github.io",
-
+  hotReload: false,
   author: {
     name: "GodX",
     url: "https://github.com/GodX-18"
@@ -25,12 +25,12 @@ export default hopeTheme({
       // Dingding: "https://example.com",
       // Discord: "https://example.com",
       // Dribbble: "https://example.com",
-      Email: "https://example.com",
+      // Email: "https://example.com",
       // Evernote: "https://example.com",
       // Facebook: "https://example.com",
       // Flipboard: "https://example.com",
       // Gitee: "https://example.com",
-      GitHub: "https://example.com",
+      GitHub: "https://github.com/GodX-18",
       // Gitlab: "https://example.com",
       // Gmail: "https://example.com",
       // Instagram: "https://example.com",
@@ -38,13 +38,13 @@ export default hopeTheme({
       // Linkedin: "https://example.com",
       // Pinterest: "https://example.com",
       // Pocket: "https://example.com",
-      QQ: "https://example.com",
+      QQ: "tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1046529973website=www.oicqzone.com",
       // Qzone: "https://example.com",
       // Reddit: "https://example.com",
       // Rss: "https://example.com",
       // Steam: "https://example.com",
       // Twitter: "https://example.com",
-      Wechat: "https://example.com",
+      // Wechat: "https://example.com"
       // Weibo: "https://example.com",
       // Whatsapp: "https://example.com",
       // Youtube: "https://example.com",

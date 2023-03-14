@@ -38,7 +38,7 @@ export default hopeTheme({
       // Linkedin: "https://example.com",
       // Pinterest: "https://example.com",
       // Pocket: "https://example.com",
-      QQ: "tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1046529973website=www.oicqzone.com",
+      QQ: "tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1046529973website=www.oicqzone.com"
       // Qzone: "https://example.com",
       // Reddit: "https://example.com",
       // Rss: "https://example.com",
@@ -88,10 +88,15 @@ export default hopeTheme({
 
   plugins: {
     blog: true,
-
     comment: {
       // @ts-expect-error: You should generate and use your own comment service
-      provider: "Giscus"
+      provider: "Giscus",
+      Giscus: {
+        repo: "GodX-18/GodX-18.github.io",
+        repoId: "R_kgDOJG1mJQ",
+        category: "Announcements",
+        categoryId: "Announcements"
+      }
     },
 
     // all features are enabled for demo, only preserve features you need here

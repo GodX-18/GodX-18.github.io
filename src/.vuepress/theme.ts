@@ -89,14 +89,11 @@ export default hopeTheme({
   plugins: {
     blog: true,
     comment: {
-      // @ts-expect-error: You should generate and use your own comment service
       provider: "Giscus",
-      Giscus: {
-        repo: "GodX-18/GodX-18.github.io",
-        repoId: "R_kgDOJG1mJQ",
-        category: "Announcements",
-        categoryId: "Announcements"
-      }
+      repo: "GodX-18/GodX-18.github.io",
+      repoId: "R_kgDOJG1mJQ",
+      category: "Announcements",
+      categoryId: "Announcements"
     },
 
     // all features are enabled for demo, only preserve features you need here

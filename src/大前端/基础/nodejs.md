@@ -1,6 +1,6 @@
 ---
 title: NodeJs
-icon: categoryselected
+icon: nodeJS
 order: 2
 category:
   - 前端

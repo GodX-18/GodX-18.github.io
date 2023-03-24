@@ -1,6 +1,6 @@
 ---
 title: Rollup
-icon: categoryselected
+icon: tree
 order: 6
 category:
   - 前端

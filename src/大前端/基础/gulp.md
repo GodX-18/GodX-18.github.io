@@ -1,19 +1,18 @@
 ---
-title: Parcel
-icon: categoryselected
+title: Gulp
+icon: define
 order: 1
 category:
   - 前端
 tag:
   - 模块化
-  - Parcel
+  - Gulp
 ---
 
 ## 快速入门
 
 ### 安装 gulp 命令行工具
 
----
 
 ```bash
 npm i gulp-cli -g
@@ -21,7 +20,6 @@ npm i gulp-cli -g
 
 ### 在项目中使用 gulp
 
-----
 
 1. 安装 gulp，作为开发时的依赖项
 
@@ -67,7 +65,6 @@ npm i gulp-cli -g
 
 ### Gulpfile 详解
 
-----
 
 * 所编写的代码都是纯 JavaScript 代码
 * 文件名可以为 `gulpfile.js` 或者 `Gulpfile.js`
@@ -77,7 +74,6 @@ npm i gulp-cli -g
 
 ### Gulpfile 转译
 
----
 
 * 可以使用其他语言来编写 gulpfile 文件，比如 ts、babel
 * 通过修改 `gulpfile.js` 文件的扩展名来表明所用的编程语言并安装对应的转译模块
@@ -87,14 +83,11 @@ npm i gulp-cli -g
 
 ### Gulpfile 分割
 
----
 
 * 如果 gulpfile 文件过大，可以将其替换为名为 `gulpfile.js`的目录，该目录中包含了一个名为 `index.js` 的文件，该文件被当作 `gulpfile.js` 使用。并且，该目录中还可以包含各个独立的任务（task）模块。
 * 每个任务（task）可以被分割为独立的文件，然后导入（import）到 gulpfile 文件中并组合。这不仅使事情变得井然有序，而且可以对每个任务（task）进行单独测试，或者根据条件改变组合。
 
 ## 创建任务
-
----
 
 * 每个 gulp 任务（task）都是一个异步的 JavaScript 函数
 * 此函数是一个可以接收 callback 作为参数的函数，或者是一个返回 stream、promise、event emitter、child process 或 observable类型值的函数
@@ -104,7 +97,7 @@ npm i gulp-cli -g
 ```js
 // 新版
 exports.build = done => {
-    console.log('GodX------>loghello gulp',);
+    console.log('GodX>loghello gulp',);
     done()
 }
 
@@ -112,14 +105,13 @@ exports.build = done => {
 const gulp = require('gulp');
 
 gulp.task('old', done => {
-    console.log('GodX------>logold',);
+    console.log('GodX>logold',);
     done()
 })
 ```
 
 ### 导出任务
 
----
 
 **任务分为公开任务或私有任务两种**
 
@@ -165,7 +157,6 @@ gulp --tasks
 
 ### 组合任务
 
----
 
 **什么是组合任务**
 
@@ -174,7 +165,6 @@ gulp --tasks
 
 **两种组合任务的异同**
 
----
 
 * 如果需要让任务（task）按顺序执行，请使用 `series()` 方法
 
@@ -182,12 +172,12 @@ gulp --tasks
   const { series } = require('gulp');
   
   function transpile(cb) {
-    console.log('GodX------>log',1);
+    console.log('GodX>log',1);
     cb();
   }
   
   function bundle(cb) {
-      console.log('GodX------>log',2);
+      console.log('GodX>log',2);
     cb();
   }
   
@@ -203,13 +193,13 @@ gulp --tasks
   
   function javascript(cb) {
       setTimeout(() => {
-          console.log('GodX------>log',2);
+          console.log('GodX>log',2);
       },2000)
     cb();
   }
   
   function css(cb) {
-      console.log('GodX------>log',1);
+      console.log('GodX>log',1);
     cb();
   }
   
@@ -347,7 +337,6 @@ gulp --tasks
 
 ## [异步执行](https://www.gulpjs.com.cn/docs/getting-started/async-completion/)
 
-----
 
   当从任务（task）中返回 stream、promise、event emitter、child process 或 observable 时，成功或错误值将通知 gulp 是否继续执行或结束。如果任务（task）出错，gulp 将立即结束执行并显示该错误
 
@@ -406,7 +395,7 @@ exports.stream = done => {
 
 ## 处理文件
 
----
+
 
 * gulp 暴露了 `src()` 和 `dest()` 方法用于处理计算机上存放的文件。
   * src 用来找到你需要处理的流文件
@@ -438,7 +427,7 @@ exports.default = () => {
 
 ### 向流（stream）中添加文件
 
----
+
 
 `src()` 也可以放在管道（pipeline）的中间，以根据给定的 glob 向流（stream）中添加文件。新加入的文件只对后续的转换可用。如果 [glob 匹配的文件与之前的有重复](https://www.gulpjs.com.cn/docs/getting-started/explaining-globs##overlapping-globs)，仍然会再次添加文件。
 
@@ -464,7 +453,7 @@ exports.default = () => {
 
 ### 分阶段输出
 
----
+
 
 * 可以把 dest（）返回的文件流当作处理过的 src（）再做新一轮的处理
 * 此功能可用于在同一个管道（pipeline）中创建未压缩（unminified）和已压缩（minified）的文件
@@ -493,7 +482,7 @@ exports.default = () => {
 
 ### 模式：流动（streaming）、缓冲（buffered）和空（empty）模式
 
-----
+-
 
 `src()` 可以工作在三种模式下：缓冲（buffering）、流动（streaming）和空（empty）模式。这些模式可以通过对 `src()` 的 `buffer` 和 `read` [参数](https://www.gulpjs.com.cn/docs/api/src##options) 进行设置。
 
@@ -503,7 +492,7 @@ exports.default = () => {
 
 ## Glob 详解
 
----
+
 
 * 用于匹配文件路径
 * 通常作为 scr 方法的参数传入，用于确定哪些文件需要被操作
@@ -512,7 +501,7 @@ exports.default = () => {
 
 ### 字符串片段与分隔符
 
----
+
 
 * 在 glob 中，分隔符永远是 `/` 字符 - 不区分操作系统
 
@@ -531,7 +520,7 @@ exports.default = () => {
 
 ### 特殊字符： * (一个星号)
 
----
+
 
 * 在一个字符串片段中匹配任意数量的字符，包括零个匹配。
 * 对于匹配单级目录下的文件很有用
@@ -547,7 +536,7 @@ exports.default = () => {
 
 ### 特殊字符： ** (两个星号)
 
----
+
 
 * 在多个字符串片段中匹配任意数量的字符，包括零个匹配。
 * 对于匹配嵌套目录下的文件很有用
@@ -563,7 +552,7 @@ exports.default = () => {
 
 ### 特殊字符： ! (取反)
 
-----
+-
 
 * glob 数组中的取反（negative）glob 必须跟在一个非取反（non-negative）的 glob 后面
 

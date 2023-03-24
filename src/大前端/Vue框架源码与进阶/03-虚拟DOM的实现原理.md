@@ -1,8 +1,10 @@
 ---
 title: 虚拟DOM的实现原理
-order: 2
+order: 3
+icon: merge
 category:
   - 前端
+  - 源码分析
 tag:
   - vue	
 ---

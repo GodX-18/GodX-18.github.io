@@ -88,6 +88,7 @@ export default hopeTheme({
 
   plugins: {
     blog: true,
+    copyright: true,
     comment: {
       provider: "Giscus",
       repo: "GodX-18/GodX-18.github.io",
@@ -95,7 +96,6 @@ export default hopeTheme({
       category: "Announcements",
       categoryId: "Announcements"
     },
-
     // all features are enabled for demo, only preserve features you need here
     mdEnhance: {
       align: true,

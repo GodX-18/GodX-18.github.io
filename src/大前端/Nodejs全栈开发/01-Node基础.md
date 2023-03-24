@@ -1,6 +1,6 @@
 ---
 title: Node 基础
-icon: categoryselected
+icon: structure
 order: 1
 category:
   - 前端

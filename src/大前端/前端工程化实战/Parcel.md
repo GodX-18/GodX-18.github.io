@@ -1,6 +1,6 @@
 ---
 title: Parcel
-icon: categoryselected
+icon: software
 order: 7
 category:
   - 前端

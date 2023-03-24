@@ -1,6 +1,6 @@
 ---
 title: Webpack 打包
-icon: categoryselected
+icon: speed
 order: 5
 category:
   - 前端

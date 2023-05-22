@@ -14,7 +14,7 @@ export default hopeTheme({
 
   logo: "/long.png",
 
-  repo: "vuepress-theme-hope/vuepress-theme-hope",
+  // repo: "https://github.com/GodX-18",
 
   docsDir: "docs",
 

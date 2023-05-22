@@ -9,27 +9,25 @@ tag:
   - 数组
 ---
 
-## [爬楼梯](https://leetcode.cn/leetbook/read/top-interview-questions-easy/xn854d/)
-
-
-**题目**
+## 1.[爬楼梯](https://leetcode.cn/leetbook/read/top-interview-questions-easy/xn854d/)
 
 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。
 
 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？
 
- 
+**示例 1：**
 
-示例 1：
-
+```js
 输入：n = 2
 输出：2
 解释：有两种方法可以爬到楼顶。
-
 1. 1 阶 + 1 阶
 2. 2 阶
-   示例 2：
+```
 
+**示例 2：**
+
+```js
 输入：n = 3
 输出：3
 解释：有三种方法可以爬到楼顶。
@@ -37,6 +35,7 @@ tag:
 1. 1 阶 + 1 阶 + 1 阶
 2. 1 阶 + 2 阶
 3. 2 阶 + 1 阶
+```
 
 **解题**
 
@@ -95,11 +94,7 @@ var climbStairs = function(n) {
 
 ![image-20220712085026236](https://raw.githubusercontent.com/GodX-18/picBed/main/image-20220712085026236.png)
 
-## [买股票的最佳时机](https://leetcode.cn/leetbook/read/top-interview-questions-easy/xn8fsh/)
-
----
-
-**题目**
+## 2.[买股票的最佳时机](https://leetcode.cn/leetbook/read/top-interview-questions-easy/xn8fsh/)
 
 给定一个数组 prices ，它的第 i 个元素 prices[i] 表示一支给定股票第 i 天的价格。
 
@@ -107,19 +102,22 @@ var climbStairs = function(n) {
 
 返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回 0 。
 
- 
+**示例 1：**
 
-示例 1：
-
+```js
 输入：[7,1,5,3,6,4]
 输出：5
 解释：在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。
-     注意利润不能是 7-1 = 6, 因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。
-示例 2：
+注意利润不能是 7-1 = 6, 因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。
+```
 
+**示例 2：**
+
+```js
 输入：prices = [7,6,4,3,1]
 输出：0
 解释：在这种情况下, 没有交易完成, 所以最大利润为 0。
+```
 
 **解题**
 

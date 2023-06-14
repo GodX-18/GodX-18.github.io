@@ -13,7 +13,6 @@ export default hopeTheme({
   iconAssets: "iconfont",
 
   logo: "/long.png",
-
   // repo: "https://github.com/GodX-18",
 
   docsDir: "docs",
@@ -64,7 +63,7 @@ export default hopeTheme({
       // sidebar
       sidebar: zhSidebar,
 
-      footer: "默认页脚",
+      // footer: "默认页脚",
 
       displayFooter: true,
 

@@ -660,3 +660,108 @@ var findDisappearedNumbers = function (nums) {
 };
 ```
 
+## [12.数组中不等三元组的数目](https://leetcode.cn/problems/number-of-unequal-triplets-in-array/)
+
+给你一个下标从 0 开始的正整数数组 nums 。请你找出并统计满足下述条件的三元组 (i, j, k) 的数目：
+
+0 <= i < j < k < nums.length
+nums[i]、nums[j] 和 nums[k] 两两不同 。
+换句话说：nums[i] != nums[j]、nums[i] != nums[k] 且 nums[j] != nums[k] 。
+返回满足上述条件三元组的数目。
+
+**示例 1：**
+
+```js
+输入：nums = [4,4,2,4,3]
+输出：3
+解释：下面列出的三元组均满足题目条件：
+
+- (0, 2, 4) 因为 4 != 2 != 3
+- (1, 2, 4) 因为 4 != 2 != 3
+- (2, 3, 4) 因为 2 != 4 != 3
+  共计 3 个三元组，返回 3 。
+  注意 (2, 0, 4) 不是有效的三元组，因为 2 > 0 。
+```
+
+**示例 2：**
+
+```js
+输入：nums = [1,1,1,1,1]
+输出：0
+解释：不存在满足条件的三元组，所以返回 0 。
+```
+
+
+:::tip 提示
+
+* 3 <= nums.length <= 100
+* 1 <= nums[i] <= 1000
+
+:::
+
+:::info 解题思路
+
+1. 因为数组的长度最大是100，可以直接暴力枚举
+
+2. 这段代码是一个JavaScript函数，它的名字叫做"unequalTriplets"。参数是一个名为"nums"的数组。下面是函数的解释：
+
+   1. 调用数组的.sort()方法，将数组中的内容从小到大排序，以方便后续操作。
+
+   2. 定义了两个变量res和n，其中res表示结果，n表示数组的长度。
+
+   3. 进入一个for循环，循环的条件是i小于n，每次循环结束后，i=j。这个循环用于处理数组中相同的元素。
+
+   4. 在每次循环的开始，有一个while循环，其条件是j小于n并且数组中的第j个元素等于第i个元素。这个while循环用于找到所有与第i个元素相等的元素。
+
+   5. 循环结束时，将res加上i * (j - i) * (n - j)，其中i表示与第i个元素相等的元素的个数，j-i表示与第i个元素相等的元素跨度，n-j表示不等于第i个元素的元素的个数。
+
+   6. 最终返回res作为结果。
+
+   在第五步，代码计算了一个res的值，这个值代表着数组中三元组的个数，其中每个三元组都不相同。具体的解释如下：
+
+   - i代表数组中与当前元素nums[i]相等的元素个数。
+   - (j-i)表示当前元素与第一个不相等的元素之间跨越的元素个数。
+   - (n-j)表示当前元素之后、与当前元素不相等的元素个数。
+   - i * (j-i) * (n-j)表示以当前元素作为最小值形成的三元组的个数。因为三元组中最小的数必须是nums[i]，而与nums[i]相等的数有i个，最小的数后面跨越的元素个数为j-i，其后的元素个数为n-j，它们构成的三元组个数是i*(j-i)*(n-j)。
+
+   因此，通过这个公式，代码计算出每个元素作为最小值时形成的三元组个数，把它们加起来，最后就得到了结果。注意，这个算法前提是数组中没有重复元素，否则可能会出现重复计算的问题。
+
+:::
+
+:::code-tabs#shell
+
+@tab 暴力枚举
+
+```js
+var unequalTriplets = function(nums) {
+    let res = 0, n = nums.length;
+    for (let i = 0; i < n; i++) {
+        for (let j = i + 1; j < n; j++) {
+            for (let k = j + 1; k < n; k++) {
+                if (nums[i] != nums[j] && nums[i] != nums[k] && nums[j] != nums[k]) {
+                    res++;
+                }
+            }
+        }
+    }
+    return res;
+};
+```
+
+@tab 排序
+
+```js
+var unequalTriplets = function(nums) {
+    nums.sort();
+    let res = 0, n = nums.length;
+    for (let i = 0, j = 0; i < n; i = j) {
+        while (j < n && nums[j] == nums[i]) {
+            j++;
+        }
+        res += i * (j - i) * (n - j);
+    }
+    return res;
+};
+```
+
+:::

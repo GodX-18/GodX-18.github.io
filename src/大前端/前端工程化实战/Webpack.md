@@ -61,7 +61,7 @@ tag:
 
    :::info
 
-   Webpack4之后的版本支持另配置打包， 会默认使用 src 目录下的 index.js 文件作为入口文件进行打包，并输出到 `dist/main.js`
+   Webpack4之后的版本支持零配置打包， 会默认使用 src 目录下的 index.js 文件作为入口文件进行打包，并输出到 `dist/main.js`
 
    :::
 

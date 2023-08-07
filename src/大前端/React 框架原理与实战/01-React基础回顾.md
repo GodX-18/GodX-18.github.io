@@ -414,7 +414,7 @@ import React, { Component } from 'react';
 class App extends Component {
     render () {
         return <div>Hello, 我是类组件</div>
-    }
+    
 }
 ```
 
@@ -562,6 +562,166 @@ class App extends Component {
 ```jsx
 const Person = props => {
 	return <input type="text" value={props.name} onChange={props.changed}/>;
+}
+```
+
+### 类组件生命周期函数
+
+![image-20230711090754008](https://raw.githubusercontent.com/GodX-18/picBed/main/image-20230711090754008.png)
+
+- constructor：构造函数，初始化 state 和绑定方法。
+- render：渲染函数，返回一个 React 元素。
+- shouldComponentUpdate：组件更新前的钩子函数，返回一个布尔值，表示是否需要更新组件。
+- componentDidMount：组件挂载后的钩子函数，一般用于获取数据。
+- componentDidUpdate：组件更新后的钩子函数，一般用于更新数据。
+- componentWillUnmount：组件卸载前的钩子函数，一般用于清理定时器等。
+
+**在组件完成更新之前需要做某种逻辑或者计算，就需要用到快照**
+
+```jsx
+componentDidUpdate(prevProps, prevState, snapshot) {}
+```
+
+**getSnapshotBeforeUpdate 方法会在组件完成更新之前执行，用于执行某种逻辑或计算，返回值可以在 componentDidUpdate 方法中的第三个参数中获取，就是说在组件更新之后可以拿到这个值再去做其他事情。**
+
+```jsx
+getSnapshotBeforeUpdate(prevProps, prevState) {
+  return 'snapshot'
+}
+```
+
+### Context
+
+通过 Context 可以跨层级传递数据
+
+![image-20230711095213559](https://raw.githubusercontent.com/GodX-18/picBed/main/image-20230711095213559.png)
+
+**第一种用法：使用 Consumer 组件**
+
+```jsx
+// userContext.js
+import React from "react"
+
+const userContext = React.createContext("default value")
+const UserProvider = userContext.Provider
+const UserConsumer = userContext.Consumer
+
+export { UserProvider, UserConsumer }
+```
+
+```jsx
+// App.js
+import { UserProvider } from "./userContext"
+class App extends Component {
+  render() {
+    return (
+      <UserProvider value="Hello React Context">
+        <A />
+      </UserProvider>
+    )
+  }
+}
+```
+
+```jsx
+// C.js
+import { UserConsumer } from "./userContext"
+
+export class C extends Component {
+  render() {
+    return (
+      <div>
+        <UserConsumer>
+          {username => {
+            return <div>{username}</div>
+          }}
+        </UserConsumer>
+      </div>
+    )
+  }
+}
+```
+
+**第二种用法**
+
+```jsx
+// userContext.js
+import * as React from "react";
+
+const userContext = React.createContext("default value");
+
+export default userContext;
+```
+
+```jsx
+// App.js
+import UserContext from "./userContext"
+class App extends Component {
+  render() {
+    return (
+      <UserContext.Provider value="Hello React Context">
+        <A />
+      </UserContext.Provider>
+    )
+  }
+}
+```
+
+```jsx
+import * as React from "react";
+import userContext from "./utils/context";
+
+export function Child2() {
+  const user = React.useContext(userContext);
+  return <div>{user}孙子</div>;
+}
+```
+
+## 表单回顾
+
+### 受控表单
+
+**表单控件中的值由组件的 state 对象来管理，state对象中存储的值和表单控件中的值时同步状态的**
+
+```jsx
+class App extends Component {
+  constructor () {
+    this.state = { username: "" }
+    this.nameChanged = this.nameChanged.bind(this)
+  }
+  
+  nameChanged (e) {
+    this.setState({username: e.target.value})
+  }
+  render() {
+    return (
+      <form>
+        <p>{this.state.username}</p>
+        <input type="text" value={this.state.username} onChange={this.nameChanged}/>
+      </form>
+    )
+  }
+}
+```
+
+### 非受控表单
+
+**表单元素的值由 DOM 元素本身管理。**
+
+```jsx
+class App extends Component {
+  constructor () {
+    this.onSubmit = this.onSubmit.bind(this)
+  }
+  onSubmit(e) {
+    console.log(this.username.value)
+    e.preventDefault();
+  }
+  render(
+    <form onSubmit={this.onSubmit}>
+      <input type="text" ref={username => this.username = username}/>
+    </form>
+  )
 }
 ```
 

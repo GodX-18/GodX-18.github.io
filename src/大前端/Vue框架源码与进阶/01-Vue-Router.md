@@ -25,13 +25,13 @@ tag:
 
 *  History 模式
   
-  *  通过 history.pushState() 方法改变地址栏
-  *  监听 popstate 事件
+  *  通过 `history.pushState()` 方法改变地址栏
+  *  监听 `popstate` 事件
   *  根据当前路由地址找到对应组件重新渲染
   
   ```js
-  history. pushState()
-  history. replacestate()
+  history.pushState()
+  history.replacestate()
   history.go()
   ```
 
@@ -104,7 +104,7 @@ nginx -s reload
 
 **执行过程**
 
-浏览器想服务器去请求这个地址，nginx 服务器接受到这次请求之后，回去找请求路径对应的文件，当找不到文件时，会根据配置文件中的 `try_files`选项去依次查找，如果还找不到，会默认返回网站根目录的 index.html。浏览器接受到这个网页之后，会在客户端去解析所对应的组件
+浏览器向服务器去请求这个地址，nginx 服务器接受到这次请求之后，回去找请求路径对应的文件，当找不到文件时，会根据配置文件中的 `try_files`选项去依次查找，如果还找不到，会默认返回网站根目录的 index.html。浏览器接受到这个网页之后，会在客户端去解析所对应的组件
 
 ## 实现原理
 

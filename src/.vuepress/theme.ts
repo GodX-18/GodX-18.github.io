@@ -3,14 +3,15 @@ import { zhNavbar } from "./navbar/index.js";
 import { zhSidebar } from "./sidebar/index.js";
 
 export default hopeTheme({
-  hostname: "https://mister-hope.github.io",
+  hostname: "https://godx-18.github.io/",
   hotReload: false,
   author: {
     name: "GodX",
     url: "https://github.com/GodX-18"
   },
-
   iconAssets: "iconfont",
+
+  // iconAssets: "//at.alicdn.com/t/c/font_4285497_ypgc4kw8wq.css",
 
   logo: "/long.png",
   // repo: "https://github.com/GodX-18",

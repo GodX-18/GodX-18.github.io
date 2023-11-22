@@ -12,25 +12,17 @@ tag:
 
 
 
-![img](https://cdn.nlark.com/yuque/0/2021/png/12533255/1613632433111-36f600d9-2d25-411c-a2de-bc33556938f7.png)
-
-
+![image-20231107091357061](https://raw.githubusercontent.com/GodX-18/picBed/main/image-20231107091357061.png)
 
 **注意：**
 
-
-
 - const定义的值不可改值的是指向的内存地址不可更改，对于数据成员的修改是没有问题的
-
-
 
 ```javascript
 const obj = {};
 obj.name = true;
 console.log(obj);  // {name : true}
 ```
-
-
 
 - 在一个大括号中   使用let关键字声明的变量才具有块级作用域 var关键字是不具备这个特点的
 
@@ -489,7 +481,7 @@ personProxy.age = 20; // { name: '小明', age: 18 } age 20
 
 ### 与Object.defineProerty()的对比
 
-![img](https://cdn.nlark.com/yuque/0/2021/png/12533255/1613723152546-3acedae4-9105-496c-9078-445e5246e046.png)
+![image-20231107091517628](https://raw.githubusercontent.com/GodX-18/picBed/main/image-20231107091517628.png)
 
 #### Proxy 可以监视到读写以外的其他操作
 

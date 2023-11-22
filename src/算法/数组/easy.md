@@ -47,19 +47,26 @@ tag:
 :::
 
 ```js
+// 定义一个函数 removeDuplicates，接收一个数组 nums 作为参数
 var removeDuplicates = function(nums) {
-  let left = 0;
-  for(let right = left + 1;right < nums.length;right++) {
-      if(nums[left] !== nums[right]) {
-          left++;
-          nums[left] = nums[right]
-      }
-  }
-  return left + 1
+    // 初始化两个指针 R 和 L，分别表示右指针和左指针，初始位置都为数组的第一个元素
+    let R = 0, L = 0;
+    // 当右指针 R 小于数组长度时，执行循环
+    while (R < nums.length) {
+        // 检查右指针所指元素是否与左指针所指元素相等
+        if (nums[R] != nums[L]) {
+            // 如果不相等，将左指针向右移动一位
+            L++;
+            // 更新左指针位置上的元素为右指针所指元素，实现去重
+            nums[L] = nums[R];
+        }
+        // 右指针向右移动一位
+        R++;
+    }
+    // 返回去重后的数组长度，即左指针位置加 1
+    return L + 1;
 };
 ```
-
-
 
 ## 2. [买卖股票的最佳时机 ||](https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/x2zsx1/)
 
@@ -765,3 +772,488 @@ var unequalTriplets = function(nums) {
 ```
 
 :::
+
+## [13. 合并两个有序数组](https://leetcode.cn/problems/merge-sorted-array/)
+
+### 题目描述
+
+给你两个按 **非递减顺序** 排列的整数数组 `nums1` 和 `nums2`，另有两个整数 `m` 和 `n` ，分别表示 `nums1` 和 `nums2` 中的元素数目。
+
+请你 **合并** `nums2` 到 `nums1` 中，使合并后的数组同样按 **非递减顺序** 排列。
+
+**注意：**最终，合并后数组不应由函数返回，而是存储在数组 `nums1` 中。为了应对这种情况，`nums1` 的初始长度为 `m + n`，其中前 `m` 个元素表示应合并的元素，后 `n` 个元素为 `0` ，应忽略。`nums2` 的长度为 `n` 。
+
+**示例 1：**
+
+```
+输入：nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+输出：[1,2,2,3,5,6]
+解释：需要合并 [1,2,3] 和 [2,5,6] 。
+合并结果是 [1,2,2,3,5,6] ，其中斜体加粗标注的为 nums1 中的元素。
+```
+
+**示例 2：**
+
+```
+输入：nums1 = [1], m = 1, nums2 = [], n = 0
+输出：[1]
+解释：需要合并 [1] 和 [] 。
+合并结果是 [1] 。
+```
+
+**示例 3：**
+
+```
+输入：nums1 = [0], m = 0, nums2 = [1], n = 1
+输出：[1]
+解释：需要合并的数组是 [] 和 [1] 。
+合并结果是 [1] 。
+注意，因为 m = 0 ，所以 nums1 中没有元素。nums1 中仅存的 0 仅仅是为了确保合并结果可以顺利存放到 nums1 中。
+```
+
+**提示：**
+
+- `nums1.length == m + n`
+- `nums2.length == n`
+- `0 <= m, n <= 200`
+- `1 <= m + n <= 200`
+- `-109 <= nums1[i], nums2[j] <= 109`
+
+### **self**
+
+:::tip 解题思路
+
+因为数组是有序的，所以只要遍历 nums2 数组中的元素，然后插入到 nums1 中，关键就是找到插入的位置，分为两种情况：
+
+1. 寻找到 nums1 中第一个大于当前 nums2 元素的索引，那么直接插入即可
+2. 如果找不到大于当前元素的值，则将当前元素插入到末尾
+
+需要注意的是：需要初始化一个指针，指向 nums1 数组的末尾有效元素
+
+:::
+
+```js
+// 定义合并函数，将两个有序数组合并到第一个数组中
+var merge = function(nums1, m, nums2, n) {
+    // 初始化指针 t，指向 nums1 数组的末尾有效元素
+    let t = m - 1;
+    // 遍历 nums2 数组中的每个元素
+    nums2.forEach(item => {
+        // 移除 nums1 数组末尾的元素
+        nums1.pop();
+        // 将指针 t 后移一位
+        t++;
+        // 寻找 nums1 中第一个大于当前 nums2 元素的索引
+        const rIndex = nums1.findIndex(i => item < i);
+        // 如果找不到大于当前元素的值，则将当前元素插入到末尾
+        const index = rIndex === -1 ? t : rIndex;
+        // 在 nums1 数组的指定索引处插入当前元素
+        nums1.splice(index, 0, item);
+    });
+};
+```
+
+**有什么不足**
+
+使用 `pop` 和 `splice` 来删除和插入元素，这样的操作会导致数组重新排序，影响性能。
+
+### **方法一：直接合并后排序**
+
+:::tip 解题思路
+
+最直观的方法是先将数组 nums2 放进数组 nums1 的尾部，然后直接对整个数组进行排序。
+
+:::
+
+```js
+var merge = function (nums1, m, nums2, n) {
+    nums1.splice(m, n, ...nums2);
+    nums1.sort((a, b) => a - b)
+};
+```
+
+### **方法二：双指针法**
+
+:::tip 解题思路
+
+1. 初始化两个指针，分别指向nums1和nums2 的头部
+2. 创建一个新数组用于存放合并后的结果
+3. 因为数组是有序的，所以每次对比nums1和nums2头部元素的大小，然后依次插入到结果数组中即可
+4. 最后将结果数组中的元素依次复制给 nums1 即可
+
+:::
+
+![gif1](https://raw.githubusercontent.com/GodX-18/picBed/main/1.gif)
+
+```js
+// 合并两个有序数组
+var merge = function(nums1, m, nums2, n) {
+    // 初始化两个指针，分别指向nums1和nums2
+    let p1 = 0, p2 = 0;
+    // 创建一个新数组用于存放合并后的结果
+    const sorted = new Array(m + n).fill(0);
+    // 当前元素的变量
+    var cur;
+    while (p1 < m || p2 < n) {
+        // 如果nums1的元素已经全部遍历完，将nums2的当前元素加入结果数组
+        if (p1 === m) {
+            cur = nums2[p2++];
+        } 
+        // 如果nums2的元素已经全部遍历完，将nums1的当前元素加入结果数组
+        else if (p2 === n) {
+            cur = nums1[p1++];
+        } 
+        // 如果nums1的当前元素小于nums2的当前元素，将nums1的当前元素加入结果数组
+        else if (nums1[p1] < nums2[p2]) {
+            cur = nums1[p1++];
+        } 
+        // 否则，将nums2的当前元素加入结果数组
+        else {
+            cur = nums2[p2++];
+        }
+        // 将当前元素加入结果数组
+        sorted[p1 + p2 - 1] = cur;
+    }
+
+    // 将排序好的数组复制回原数组nums1
+    for (let i = 0; i != m + n; ++i) {
+        nums1[i] = sorted[i];
+    }
+};
+```
+
+### 方法三：逆向双指针
+
+:::tip 解题思路
+
+方法二中，之所以要使用临时变量，是因为如果直接合并到数组 nums1 中，nums1 中的元素可能会在取出之前被覆盖。那么如何直接避免覆盖 numsr 中的元素呢？观察可知，nums1 的后半部分是空的，可以直接覆盖而不会影响结果。因此可以指针设置为从后向前遍历，每次取两者之中的较大者
+放进 nums1 的最后面。
+
+:::
+
+```js
+// 合并两个有序数组的函数
+var merge = function(nums1, m, nums2, n) {
+    // 初始化指针，p1指向nums1的末尾（有效元素的最后一个位置），p2指向nums2的末尾
+    let p1 = m - 1, p2 = n - 1;
+    // 初始化合并后数组的末尾位置
+    let tail = m + n - 1;
+    var cur; // 用于存储当前比较的元素的变量
+    // 循环，直到p1和p2都小于0
+    while (p1 >= 0 || p2 >= 0) {
+        // 如果p1已经小于0，说明nums1的元素都已经遍历完
+        if (p1 === -1) {
+            cur = nums2[p2--]; // 将nums2的当前元素放入合并后数组，同时移动p2指针
+        }
+        // 如果p2已经小于0，说明nums2的元素都已经遍历完
+        else if (p2 === -1) {
+            cur = nums1[p1--]; // 将nums1的当前元素放入合并后数组，同时移动p1指针
+        }
+        // 如果nums1[p1]大于nums2[p2]，将nums1[p1]放入合并后数组
+        else if (nums1[p1] > nums2[p2]) {
+            cur = nums1[p1--]; // 同时移动p1指针
+        }
+        // 如果nums2[p2]大于等于nums1[p1]，将nums2[p2]放入合并后数组
+        else {
+            cur = nums2[p2--]; // 同时移动p2指针
+        }
+        nums1[tail--] = cur; // 将当前比较得到的元素放入合并后数组的末尾
+    }
+};
+```
+
+## [14. 移除元素](https://leetcode.cn/problems/remove-element/description/?envType=study-plan-v2&envId=top-interview-150)
+
+### 题目描述
+
+给你一个数组 `nums` 和一个值 `val`，你需要 **[原地](https://baike.baidu.com/item/原地算法)** 移除所有数值等于 `val` 的元素，并返回移除后数组的新长度。
+
+不要使用额外的数组空间，你必须仅使用 `O(1)` 额外空间并 **[原地 ](https://baike.baidu.com/item/原地算法)修改输入数组**。
+
+元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。
+
+**说明:**
+
+为什么返回数值是整数，但输出的答案是数组呢?
+
+请注意，输入数组是以**「引用」**方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。
+
+你可以想象内部操作如下:
+
+```
+// nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝
+int len = removeElement(nums, val);
+
+// 在函数里修改输入数组对于调用者是可见的。
+// 根据你的函数返回的长度, 它会打印出数组中 该长度范围内 的所有元素。
+for (int i = 0; i < len; i++) {
+    print(nums[i]);
+}
+```
+
+**示例 1：**
+
+```
+输入：nums = [3,2,2,3], val = 3
+输出：2, nums = [2,2]
+解释：函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。你不需要考虑数组中超出新长度后面的元素。例如，函数返回的新长度为 2 ，而 nums = [2,2,3,3] 或 nums = [2,2,0,0]，也会被视作正确答案。
+```
+
+**示例 2：**
+
+```
+输入：nums = [0,1,2,2,3,0,4,2], val = 2
+输出：5, nums = [0,1,3,0,4]
+解释：函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。注意这五个元素可为任意顺序。你不需要考虑数组中超出新长度后面的元素。
+```
+
+**提示：**
+
+- `0 <= nums.length <= 100`
+- `0 <= nums[i] <= 50`
+- `0 <= val <= 100`
+
+### self
+
+```js
+// 定义名为 removeElement 的函数，用于移除数组中指定的元素
+var removeElement = function(nums, val) {
+    // 使用 for 循环遍历数组中的每个元素
+    for (let i = 0; i < nums.length;) {
+        // 检查当前元素是否等于指定的值 val
+        if (nums[i] === val) {
+            // 如果相等，使用 splice 方法移除当前位置的元素
+            nums.splice(i, 1);
+            // 使用 continue 关键字跳过当前循环的剩余代码，直接进入下一次循环
+            continue;
+        }
+        // 如果当前元素不等于指定值，增加循环变量 i，继续下一次循环
+        i++;
+    }
+};
+```
+
+**有什么问题**
+
+在循环中修改数组的长度可能会导致索引混乱。
+
+### **双指针法**
+
+:::tip 解题思路
+
+1. 初始化左右指针，分别指向数组的起始位置和末尾位置
+2. 如果左指针指向的元素等于要移除的值val，将左指针指向的元素替换为右指针指向的元素，并将右指针向左移动
+3. 如果左指针指向的元素不等于要移除的值val，则将左指针向右移动
+4. 循环结束后，返回左指针的值，即移除元素后的新数组长度
+
+:::
+
+```js
+// 定义名为removeElement的函数，接收两个参数：nums（数组）和val（要移除的元素）
+var removeElement = function (nums, val) {
+   // 初始化左指针为数组的起始位置
+   let left = 0;
+   // 初始化右指针为数组的末尾位置
+   let right = nums.length - 1;
+   // 当左指针小于等于右指针时，执行循环
+   while(left <= right) {
+       // 如果左指针指向的元素等于要移除的值val
+       if(nums[left] === val) {
+           // 将左指针指向的元素替换为右指针指向的元素，并将右指针向左移动
+           nums[left] = nums[right--];
+       } else {
+           // 如果左指针指向的元素不等于要移除的值val，则将左指针向右移动
+           left++;
+       }
+   }
+   // 循环结束后，返回左指针的值，即移除元素后的新数组长度
+   return left;
+};
+
+```
+
+## 15. [买卖股票的最佳时机](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/description/?envType=study-plan-v2&envId=top-interview-150)
+
+给定一个数组 `prices` ，它的第 `i` 个元素 `prices[i]` 表示一支给定股票第 `i` 天的价格。
+
+你只能选择 **某一天** 买入这只股票，并选择在 **未来的某一个不同的日子** 卖出该股票。设计一个算法来计算你所能获取的最大利润。
+
+返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回 `0` 。
+
+**示例 1：**
+
+```
+输入：[7,1,5,3,6,4]
+输出：5
+解释：在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。
+     注意利润不能是 7-1 = 6, 因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。
+```
+
+**示例 2：**
+
+```
+输入：prices = [7,6,4,3,1]
+输出：0
+解释：在这种情况下, 没有交易完成, 所以最大利润为 0。
+```
+
+**提示：**
+
+- `1 <= prices.length <= 105`
+- `0 <= prices[i] <= 104`
+
+### 法一：暴力破解法
+
+```js
+/**
+ * @param {number[]} prices
+ * @return {number}
+ */
+var maxProfit = function (prices) {
+    let max = 0
+    for (let i = 0; i < prices.length; i++) {
+        for (let j = i + 1; j < prices.length; j++) {
+            const profit = prices[j] - prices[i];
+            if(profit > max) {
+                max = profit
+            }
+        }
+    }
+    return max
+};
+```
+
+### 法二：一次遍历
+
+:::tip
+
+我们来假设自己来购买股票。随着时间的推移，每天我们都可以选择出售股票与否。那么，假设在第 i 天，如果我们要在今天卖股票，那么我们能赚多少钱呢？
+
+显然，如果我们真的在买卖股票，我们肯定会想：如果我是在历史最低点买的股票就好了！太好了，在题目中，我们只要用一个变量记录一个历史最低价格 minprice，我们就可以假设自己的股票是在那天买的。那么我们在第 i 天卖出股票能得到的利润就是 prices[i] - minprice。
+
+因此，我们只需要遍历价格数组一遍，记录历史最低点，然后在每一天考虑这么一个问题：如果我是在历史最低点买进的，那么我今天卖出能赚多少钱？当考虑完所有天数之时，我们就得到了最好的答案。
+
+:::
+
+![figures.gif](https://raw.githubusercontent.com/GodX-18/picBed/main/1658590330-wivils-figures.gif)
+
+```js
+// 定义一个名为maxProfit的函数，接受一个参数prices（代表股票价格数组）
+var maxProfit = function (prices) {
+    // 初始化最小价格为JavaScript中的最大数值
+    let minPrice = Number.MAX_VALUE;
+    // 初始化最大利润为0
+    let maxProfit = 0;
+    // 遍历股票价格数组
+    for (let i = 0; i < prices.length; i++) {
+        // 如果当前价格小于最小价格
+        if (prices[i] < minPrice) {
+            // 更新最小价格为当前价格
+            minPrice = prices[i];
+        }
+        // 如果当前价格减去最小价格大于当前最大利润
+        else if (prices[i] - minPrice > maxProfit) {
+            // 更新最大利润为当前价格减去最小价格
+            maxProfit = prices[i] - minPrice;
+        }
+    }
+    // 返回最大利润
+    return maxProfit;
+};
+
+```
+
+## [16. 删除排序数组中的重复项 II](https://leetcode.cn/problems/remove-duplicates-from-sorted-array-ii/description/?envType=study-plan-v2&envId=top-interview-150)
+
+给你一个有序数组 `nums` ，请你**[ 原地](http://baike.baidu.com/item/原地算法)** 删除重复出现的元素，使得出现次数超过两次的元素**只出现两次** ，返回删除后数组的新长度。
+
+不要使用额外的数组空间，你必须在 **[原地 ](https://baike.baidu.com/item/原地算法)修改输入数组** 并在使用 O(1) 额外空间的条件下完成。
+
+ 
+
+**说明：**
+
+为什么返回数值是整数，但输出的答案是数组呢？
+
+请注意，输入数组是以**「引用」**方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。
+
+你可以想象内部操作如下:
+
+```
+// nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝
+int len = removeDuplicates(nums);
+
+// 在函数里修改输入数组对于调用者是可见的。
+// 根据你的函数返回的长度, 它会打印出数组中 该长度范围内 的所有元素。
+for (int i = 0; i < len; i++) {
+    print(nums[i]);
+}
+```
+
+**示例 1：**
+
+```
+输入：nums = [1,1,1,2,2,3]
+输出：5, nums = [1,1,2,2,3]
+解释：函数应返回新长度 length = 5, 并且原数组的前五个元素被修改为 1, 1, 2, 2, 3。 不需要考虑数组中超出新长度后面的元素。
+```
+
+**示例 2：**
+
+```
+输入：nums = [0,0,1,1,1,1,2,3,3]
+输出：7, nums = [0,0,1,1,2,3,3]
+解释：函数应返回新长度 length = 7, 并且原数组的前五个元素被修改为 0, 0, 1, 1, 2, 3, 3。不需要考虑数组中超出新长度后面的元素。
+```
+
+**提示：**
+
+- `1 <= nums.length <= 3 * 104`
+- `-104 <= nums[i] <= 104`
+- `nums` 已按升序排列
+
+### 双指针法（快慢指针）
+
+:::tip 解题思路
+
+1. 初始化 `low` 和 `fast` 指针为 `2`。因为此问题允许每个元素最多重复两次，所以前两个元素我们不需要检查，直接保留即可。
+2. 使用一个 `while` 循环处理 `fast` 指向的元素
+   - 如果当前 `fast` 指针指向的元素与 `low` 指向的元素的前两个元素不相等 (`nums[low - 2] !== nums[fast]`), 那么这个元素是需要保留的，我们就把这个元素复制到 `low` 指针的位置，然后 `low` 指针向前移动一位，`fast` 指针也向前移动一位
+   - 如果 `nums[low - 2]` 和 `nums[fast]` 相等，这意味着有重复超过两次的元素存在，因此我们只将 `fast` 指针向后移动一位
+3. 循环结束后，数组中 `low` 索引之前的元素就是处理后的结果，返回 `low` 作为新长度。
+
+需要注意的是，这个函数会直接更改原数组，而非创建一个新的数组。此函数的空间复杂度为 O(1)，即使用了常数量级的额外空间。
+
+:::
+
+```js
+// 定义名为removeDuplicates的函数，用于移除排序数组中的重复元素，每个元素最多保留两个
+var removeDuplicates = function (nums) {
+    // 获取数组长度
+    const len = nums.length;
+    
+    // 如果数组长度小于等于2，无需移除重复元素，直接返回数组长度
+    if (len <= 2) {
+        return len;
+    }
+
+    // 初始化两个指针，分别表示当前元素的位置（low）和遍历数组的位置（fast）
+    let low = 2, fast = 2;
+
+    // 遍历数组
+    while (fast < len) {
+        // 检查当前元素和前两个元素是否相同，如果不同，则将当前元素放置在low的位置，并移动low指针
+        if (nums[low - 2] !== nums[fast]) {
+            nums[low] = nums[fast];
+            low++;
+        }
+
+        // 移动fast指针，继续遍历数组
+        fast++;
+    }
+
+    // 返回新数组的长度，即保留重复元素最多两次后的数组长度
+    return low;
+};
+```
+

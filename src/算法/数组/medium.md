@@ -519,11 +519,7 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
 
 :::
 
-:::info 解题思路
-
-排序 + 双指针
-
-:::
+### 排序 + 双指针
 
 ```js
 /**
@@ -641,6 +637,321 @@ var numTimesAllBlue = function(flips) {
         }
     }
     return res
+};
+```
+
+## [跳跃游戏](https://leetcode.cn/problems/jump-game/description/?envType=study-plan-v2&envId=top-interview-150)
+
+给你一个非负整数数组 `nums` ，你最初位于数组的 **第一个下标** 。数组中的每个元素代表你在该位置可以跳跃的最大长度。
+
+判断你是否能够到达最后一个下标，如果可以，返回 `true` ；否则，返回 `false` 。
+
+**示例 1：**
+
+```
+输入：nums = [2,3,1,1,4]
+输出：true
+解释：可以先跳 1 步，从下标 0 到达下标 1, 然后再从下标 1 跳 3 步到达最后一个下标。
+```
+
+**示例 2：**
+
+```
+输入：nums = [3,2,1,0,4]
+输出：false
+解释：无论怎样，总会到达下标为 3 的位置。但该下标的最大跳跃长度是 0 ， 所以永远不可能到达最后一个下标。
+```
+
+### 贪心算法
+
+:::tip 解题思路(找不能)
+
+1. 定义一个变量用来记录可以跳跃的最大距离。
+2. 遍历数组，一旦可以跳跃的最大距离小于当前的下标，那么就代表不能够到达最后一个下标，否则更新可以跳跃的最大距离。
+3. 如果遍历到最后一个元素，代表能够到达最后一个下标。
+
+:::
+
+```js
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var canJump = function (nums) {
+    let cover = 0;
+    for (let i = 0; i < nums.length; i++) {
+        // 一旦可以跳跃的最大距离小于当前的下标，那么就代表不能够到达最后一个下标
+        if (cover < i) return false
+        // 更新可以跳跃的最大距离
+        cover = Math.max(cover, i + nums[i])
+    }
+    return true
+};
+```
+
+::: tip 解题思路（找能）
+
+1. 定义一个变量用来记录可以跳跃的最大距离,初始值为第一个元素的值。
+2. 遍历当前能跳跃的最大距离，如果可以跳跃的最大距离大于等于数组的长度，那么就代表能够到达最后一个下标。
+3. 如果遍历完，那么就代表没有找到能够到达最后一个下标的元素。
+
+:::
+
+```js
+var canJump = function (nums) {
+  	// 长度为1 直接就是终点
+    if (nums.length === 1) return true;
+    let cover = nums[0];
+    for (let i = 0; i <= cover; i++) {
+        cover = Math.max(cover, i + nums[i]);
+        if (cover >= nums.length - 1) return true
+    }
+    return false
+};
+```
+
+:::tip 解题思路（从后往前）
+
+1. 定义一个变量end，表示必须到达的位置，初始为最后一个下标。
+2. 从后往前遍历数组，对于每个位置i，如果end-i小于等于nums[i]，说明从i可以跳到end，那么就更新end为i，表示只要能到达i，就能到达最后。
+3. 最后判断end是否为0，如果是，说明可以从第一个位置跳到最后一个位置，否则不行。
+
+:::
+
+```js
+var canJump = function (nums) {
+    // 必须到达end下标的数字
+    let end = nums.length - 1;
+    for (let i = nums.length - 2; i >= 0; i--) {
+        if (end - i <= nums[i]) {
+            end = i;
+        }
+    }
+    return end == 0;
+};
+```
+
+## [跳跃游戏II](https://leetcode.cn/problems/jump-game-ii/description/?envType=study-plan-v2&envId=top-interview-150)
+
+给定一个长度为 `n` 的 **0 索引**整数数组 `nums`。初始位置为 `nums[0]`。
+
+每个元素 `nums[i]` 表示从索引 `i` 向前跳转的最大长度。换句话说，如果你在 `nums[i]` 处，你可以跳转到任意 `nums[i + j]` 处:
+
+- `0 <= j <= nums[i]` 
+- `i + j < n`
+
+返回到达 `nums[n - 1]` 的最小跳跃次数。生成的测试用例可以到达 `nums[n - 1]`。
+
+**示例 1:**
+
+```
+输入: nums = [2,3,1,1,4]
+输出: 2
+解释: 跳到最后一个位置的最小跳跃数是 2。
+     从下标为 0 跳到下标为 1 的位置，跳 1 步，然后跳 3 步到达数组的最后一个位置。
+```
+
+**示例 2:**
+
+```
+输入: nums = [2,3,0,1,4]
+输出: 2
+```
+
+### 贪心算法
+
+:::tip 解题思路
+
+1. 初始化当前位置（`curIndex`）和下一个位置（`nextIndex`）为0，步数（`steps`）为0。
+2. 遍历数组，对于每个位置，计算能够到达的下一个位置（`nextIndex`）。
+3. 如果当前位置等于之前设定的当前位置（`curIndex`），说明已经达到了当前步数的最远位置，更新当前位置为新的最远位置（`nextIndex`），步数加1。
+4. 重复步骤2和步骤3，直到遍历完整个数组。
+5. 返回步数作为结果。
+
+:::
+
+```js
+var jump = function(nums) {
+    let curIndex = 0
+    let nextIndex = 0
+    let steps = 0
+    for(let i = 0; i < nums.length - 1; i++) {
+        nextIndex = Math.max(nums[i] + i, nextIndex)
+        if(i === curIndex) {
+            curIndex = nextIndex
+            steps++
+        }
+    }
+    return steps
+};
+```
+
+## H 指数
+
+给你一个整数数组 `citations` ，其中 `citations[i]` 表示研究者的第 `i` 篇论文被引用的次数。计算并返回该研究者的 **`h` 指数**。
+
+根据维基百科上 [h 指数的定义](https://baike.baidu.com/item/h-index/3991452?fr=aladdin)：`h` 代表“高引用次数” ，一名科研人员的 `h` **指数** 是指他（她）至少发表了 `h` 篇论文，并且每篇论文 **至少** 被引用 `h` 次。如果 `h` 有多种可能的值，**`h` 指数** 是其中最大的那个。
+
+**示例 1：**
+
+```
+输入：citations = [3,0,6,1,5]
+输出：3 
+解释：给定数组表示研究者总共有 5 篇论文，每篇论文相应的被引用了 3, 0, 6, 1, 5 次。
+     由于研究者有 3 篇论文每篇 至少 被引用了 3 次，其余两篇论文每篇被引用 不多于 3 次，所以她的 h 指数是 3。
+```
+
+**示例 2：**
+
+```
+输入：citations = [1,3,1]
+输出：1
+```
+
+### 排序
+
+:::tip 解题思路
+
+h指数的定义要求有h篇论文分别被引用了至少h次，所以如果当前的元素值大于h，说明这篇论文满足条件，可以将h指数增加一。例如，如果排序后的数组是[6, 5, 3, 1, 0]，那么当遍历到第一个元素6时，h=0，因为6>0，所以将h加一，变为1。当遍历到第二个元素5时，h=1，因为5>1，所以将h加一，变为2。当遍历到第三个元素3时，h=2，因为3>2，所以将h加一，变为3。当遍历到第四个元素1时，h=3，因为1<=3，所以无法增加h指数，终止遍历。最终的h指数是3。
+
+:::
+
+**反序**
+
+```js
+var hIndex = function (citations) {
+    citations.sort((a, b) => b - a);
+    let h = 0;
+    for (let i = 0; i < citations.length; i++) {
+        if (citations[i] > h) {
+            h++;
+        }
+    }
+    return h;
+};
+```
+
+**正序**
+
+
+```js
+var hIndex = function(citations) {
+    citations.sort((a, b) => a - b);
+    let h = 0, i = citations.length - 1; 
+    while (i >= 0 && citations[i] > h) {
+        h++; 
+        i--;
+    }
+    return h;
+};
+```
+
+## [除自身以外数组的乘积](https://leetcode.cn/problems/product-of-array-except-self/)
+
+给你一个整数数组 `nums`，返回 *数组 `answer` ，其中 `answer[i]` 等于 `nums` 中除 `nums[i]` 之外其余各元素的乘积* 。
+
+题目数据 **保证** 数组 `nums`之中任意元素的全部前缀元素和后缀的乘积都在 **32 位** 整数范围内。
+
+请 **不要使用除法，**且在 `O(*n*)` 时间复杂度内完成此题。 
+
+**示例 1:**
+
+```
+输入: nums = [1,2,3,4]
+输出: [24,12,8,6]
+```
+
+**示例 2:**
+
+```
+输入: nums = [-1,1,0,-3,3]
+输出: [0,0,9,0,0]
+```
+
+**提示：**
+
+- `2 <= nums.length <= 105`
+- `-30 <= nums[i] <= 30`
+- **保证** 数组 `nums`之中任意元素的全部前缀元素和后缀的乘积都在 **32 位** 整数范围内
+
+**进阶：
+
+你可以在 `O(1)` 的额外空间复杂度内完成这个题目吗？（ 出于对空间复杂度分析的目的，输出数组 **不被视为** 额外空间。）
+
+### 方法一：左右乘积列表
+
+:::tip 解题思路
+
+我们不必将所有数字的乘积除以给定索引处的数字得到相应的答案，而是利用索引左侧所有数字的乘积和右侧所有数字的乘积（即前缀与后缀）相乘得到答案。
+
+1. 初始化两个空数组 L 和 R。对于给定索引 i，L[i] 代表的是 i 左侧所有数字的乘积，R[i] 代表的是 i 右侧所有数字的乘积。
+2. 我们需要用两个循环来填充 L 和 R 数组的值。对于数组 L，L[0] 应该是 1，因为第一个元素的左边没有元素。对于其他元素：L[i] = L[i-1] * nums[i-1]。
+3. 同理，对于数组 R，R[length-1] 应为 1。length 指的是输入数组的大小。其他元素：R[i] = R[i+1] * nums[i+1]。
+4. 当 R 和 L 数组填充完成，我们只需要在输入数组上迭代，且索引 i 处的值为：L[i] * R[i]。
+
+:::
+
+```js
+var productExceptSelf = function (nums) {
+    const len = nums.length;
+    const L = [];
+    const R = [];
+    const answer = [];
+
+    L[0] = 1;
+    for (let i = 1; i < len; i++) {
+        L[i] = nums[i - 1] * L[i - 1]
+    }
+
+    R[len - 1] = 1;
+    for (let i = len - 2; i >= 0; i--) {
+        R[i] = nums[i + 1] * R[i + 1]
+    }
+
+    for (let i = 0; i < len; i++) {
+        answer[i] = L[i] * R[i];
+    }
+
+    return answer
+};
+```
+
+### 方法二：空间复杂度 O(1) 的方法
+
+:::tip 解题思路
+
+尽管上面的方法已经能够很好的解决这个问题，但是空间复杂度并不为常数。
+
+由于输出数组不算在空间复杂度内，那么我们可以将 L 或 R 数组用输出数组来计算。先把输出数组当作 L 数组来计算，然后再动态构造 R 数组得到结果。让我们来看看基于这个思想的算法。
+
+1. 初始化 answer 数组，对于给定索引 i，answer[i] 代表的是 i 左侧所有数字的乘积。
+2. 构造方式与之前相同，只是我们试图节省空间，先把 answer 作为方法一的 L 数组。
+3. 这种方法的唯一变化就是我们没有构造 R 数组。而是用一个遍历来跟踪右边元素的乘积。并更新数组 answer[i]=answer[i]∗R。然后 R 更新为 R=R∗nums[i]，其中变量 R 表示的就是索引右侧数字的乘积。
+
+:::
+
+```js
+var productExceptSelf = function(nums) {
+    const length = nums.length;
+    const answer = [];
+
+    // answer[i] 表示索引 i 左侧所有元素的乘积
+    // 因为索引为 '0' 的元素左侧没有元素， 所以 answer[0] = 1
+    answer[0] = 1;
+    for (let i = 1; i < length; i++) {
+        answer[i] = nums[i - 1] * answer[i - 1];
+    }
+
+    // R 为右侧所有元素的乘积
+    // 刚开始右边没有元素，所以 R = 1
+    let R = 1;
+    for (let i = length - 1; i >= 0; i--) {
+        // 对于索引 i，左边的乘积为 answer[i]，右边的乘积为 R
+        answer[i] = answer[i] * R;
+        // R 需要包含右边所有的乘积，所以计算下一个结果时需要将当前值乘到 R 上
+        R *= nums[i];
+    }
+    return answer;
 };
 ```
 

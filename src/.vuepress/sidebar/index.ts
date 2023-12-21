@@ -7,5 +7,6 @@ export const zhSidebar = sidebar({
   "/算法/": "structure",
   "/面试/": "structure",
   "/语言/": "structure",
+  "/项目管理/": "structure",
   "/其它/": "structure"
 });

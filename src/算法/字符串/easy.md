@@ -129,3 +129,109 @@ let isValid = function(s) {
 };
 ```
 
+## [找出字符串中第一个匹配项的下标](https://leetcode.cn/problems/find-the-index-of-the-first-occurrence-in-a-string/)
+
+给你两个字符串 `haystack` 和 `needle` ，请你在 `haystack` 字符串中找出 `needle` 字符串的第一个匹配项的下标（下标从 0 开始）。如果 `needle` 不是 `haystack` 的一部分，则返回 `-1` 。
+
+ 
+
+**示例 1：**
+
+```
+输入：haystack = "sadbutsad", needle = "sad"
+输出：0
+解释："sad" 在下标 0 和 6 处匹配。
+第一个匹配项的下标是 0 ，所以返回 0 。
+```
+
+**示例 2：**
+
+```
+输入：haystack = "leetcode", needle = "leeto"
+输出：-1
+解释："leeto" 没有在 "leetcode" 中出现，所以返回 -1 。
+```
+
+ 
+
+**提示：**
+
+- `1 <= haystack.length, needle.length <= 104`
+- `haystack` 和 `needle` 仅由小写英文字符组成
+
+### 暴力破解
+
+```js
+/**
+ * @param {string} haystack
+ * @param {string} needle
+ * @return {number}
+ */
+var strStr = function (haystack, needle) {
+    for (let i = 0; i < haystack.length; i++) {
+        let flag = true
+        for (j = 0; j < needle.length; j++) {
+            if (haystack[i + j] !== needle[j]) {
+                flag = false
+                break;
+            }
+        }
+        if (flag) return i
+    }
+    return -1
+};
+```
+
+### KMP
+
+```js
+var strStr = function(haystack, needle) {
+    // 获取输入字符串的长度
+    const n = haystack.length, m = needle.length;
+
+    // 如果要查找的字符串为空，则返回 0
+    if (m === 0) {
+        return 0;
+    }
+
+    // 创建一个长度为 m 的数组 pi，用于存储部分匹配表（partial match table）
+    const pi = new Array(m).fill(0);
+
+    // 构建部分匹配表
+    for (let i = 1, j = 0; i < m; i++) {
+        // 当 j 大于 0 且当前字符不匹配时，回溯 j 的值
+        while (j > 0 && needle[i] !== needle[j]) {
+            j = pi[j - 1];
+        }
+
+        // 如果当前字符匹配，增加部分匹配值 j
+        j++;
+
+        // 将部分匹配值保存到部分匹配表中
+        pi[i] = j;
+
+        // 注意：以上过程构建了 needle 字符串的部分匹配表
+    }
+
+    // 在 haystack 字符串中查找 needle 字符串
+    for (let i = 0, j = 0; i < n; i++) {
+        // 当 j 大于 0 且当前字符不匹配时，回溯 j 的值
+        while (j > 0 && haystack[i] !== needle[j]) {
+            j = pi[j - 1];
+        }
+
+        // 如果当前字符匹配，增加 j
+        j++;
+
+        // 如果 j 的值等于 needle 字符串的长度 m，说明找到了匹配，返回匹配的起始位置
+        if (j === m) {
+            return i - m + 1;
+        }
+    }
+
+    // 没有找到匹配，返回 -1
+    return -1;
+};
+
+```
+

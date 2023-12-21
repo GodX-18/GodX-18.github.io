@@ -1,0 +1,92 @@
+---
+title: PMP
+date: 2023-12-19
+order: 2
+category:
+  - 项目管理
+tag:
+  - PMP
+---
+
+## 什么是PMP
+
+国际项目管理师 （Project Management Professional），通常简称PMP，是由美国国际项目管理学会 （Project Management Institute， PMI ）组织所举办的项目管理领域资格认证。
+
+PMP采取资格审查与考试相结合的方式进行，考试内容主要源自美国国际项目管理学会编写的《项目管理知识体系指南》（A Guide to the Project Management Body of Knowledge, PMBOK® Guide）
+
+截至 2018年2月底截止，全球PMP人数为 839,682人（美国国际项目管理学会）
+
+## 获取PMP有什么意义
+
+**能力的提升**
+
+79.2 %的被调查者认为领导能力得到了提升，85.9%的被调查者认为执行能力得到了提升，61.4％的被调查者认为创新能力得到了提升，84.9 ％的被调查者认为竞争能力得到了提升
+
+**社会认可指标**
+
+调查有效数据中，有76.7%的人认为取得PMP®认证之后得到了领导和同事的认可
+
+**工作效率提升**
+
+调查有效数据中，有96.5%的人认为工作效率的到提高。94.6%的人认为项目管理可以促进对工作目标的实现
+
+**收入的提升**
+
+通过对调查数据中的分析，取得PMP®培训后相比培训前工资平均提高了10.2% 
+
+## 适合人群
+
+1、工作重心需要转型：如技术型人员转型到管理层。
+
+2、需要个人能力提升：在职业生涯规划遇到瓶颈时，需要提升自身能力，获取更大的发展平台。
+
+3、面临找工作或跳槽：现在很多企业的HR比较重视项目管理PMPO，已要求新员工能有个“项目管理的通用语言”。
+
+4、业界认可，自身认可：项目管理也成发展趋势。
+
+5、企业需求、自身需求，比如升职、加薪。
+
+6、遇到新的机遇与挑战：新的团队组建、岗位调整，公司内部升职加薪，PMP可以获得更多机遇。
+
+## 考试形式
+
+![image-20231219154225757](https://raw.githubusercontent.com/GodX-18/picBed/main/image-20231219154225757.png)
+
+![image-20231219160530526](https://raw.githubusercontent.com/GodX-18/picBed/main/image-20231219160530526.png)
+
+![image-20231219154520877](https://raw.githubusercontent.com/GodX-18/picBed/main/image-20231219154520877.png)
+
+:::tip
+
+试卷是一本书，看题速度尤其关键
+
+:::
+
+## 考纲
+
+![image-20231219160705009](https://raw.githubusercontent.com/GodX-18/picBed/main/image-20231219160705009.png)
+
+:::tip
+
+通过学习项目管理原则、五大过程组、十大绩效域、敏捷等知识，让我们掌握在人、商业环境和流程领域的所需的各种能力，这也是 PMP 所考察的内容。 
+
+:::
+
+## 试题构成
+
+![image-20231219160404021](https://raw.githubusercontent.com/GodX-18/picBed/main/image-20231219160404021.png)
+
+![image-20231219155547363](https://raw.githubusercontent.com/GodX-18/picBed/main/image-20231219155547363.png)
+
+## 证书示例
+
+![image-20231219154800381](https://raw.githubusercontent.com/GodX-18/picBed/main/image-20231219154800381.png)
+
+## 资源下载
+
+[PMP新考纲.pdf ](https://github.com/GodX-18/files/blob/master/PMP新考纲.pdf)
+
+[PMBOK第六版_中文版.pdf](https://github.com/GodX-18/files/blob/master/PMBOK第六版_中文版.pdf)
+
+[敏捷实践指南.pdf](https://github.com/GodX-18/files/blob/master/敏捷实践指南.pdf)
+

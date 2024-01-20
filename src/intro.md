@@ -3,5 +3,47 @@ icon: info
 title: 自我介绍
 ---
 
-![2372AALQPM6PBN9](https://raw.githubusercontent.com/GodX-18/picBed/main/2372AALQPM6PBN9.png)
+<!-- ![2372AALQPM6PBN9](https://raw.githubusercontent.com/GodX-18/picBed/main/2372AALQPM6PBN9.png) -->
+
+
+## 个人信息 
+
+* 性 别：男
+* 年 龄：26  
+* 工作年限：5年经验
+* 邮 箱：1046529973@qq.com 
+* 岗 位：前端开发工程师   
+* 专 业：软件工程 
+
+## 工作及教育经历
+
+
+
+## 专业技能
+
+
+## 项目经历
+
+1. 公司/学校 - XXweb服务器 - 独立开发 - 201508- 201512 
+    * 具体功能 
+    * 运用了那些技术，技术难点是
+    * 效果如何
+    * demo演示地址，github地址 
+
+2. 公司/学校 - XX游戏 - 负责后端开发 - 201309- 201401 
+    * 具体功能 
+    * 运用了那些技术，技术难点是
+    * 效果如何
+    * demo演示地址，github地址 
+
+## 获奖经历
+
+## 其他信息 
+
+## 关于作者
+
+
+
+
+
 

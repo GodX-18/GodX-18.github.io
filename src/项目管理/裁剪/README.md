@@ -1,5 +1,5 @@
 ---
-title: 敏捷
+title: 裁剪
 index: false
 dir: 
   order: 7

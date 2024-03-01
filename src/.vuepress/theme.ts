@@ -82,7 +82,8 @@ export default hopeTheme({
 
   encrypt: {
     config: {
-      "/demo/encrypt.html": ["1234"]
+      "/demo/encrypt.html": ["1234"],
+      "/项目管理/PMP/解题思路.html": ["kang"]
     }
   },
 

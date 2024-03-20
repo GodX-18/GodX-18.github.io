@@ -11,10 +11,19 @@
     "docs:update-package": "yarn dlx vp-update"
   },
   "devDependencies": {
-    "@vuepress/client": "2.0.0-beta.61",
-    "vue": "^3.2.47",
-    "vuepress": "2.0.0-beta.61",
-    "vuepress-plugin-search-pro": "^2.0.0-beta.193",
-    "vuepress-theme-hope": "2.0.0-beta.189"
+    "@vue/repl": "^4.1.1",
+    "@vuepress/bundler-vite": "2.0.0-rc.8",
+    "chart.js": "^4.4.2",
+    "echarts": "^5.5.0",
+    "flowchart.ts": "^3.0.0",
+    "katex": "^0.16.9",
+    "mermaid": "^10.9.0",
+    "reveal.js": "^5.0.5",
+    "sandpack-vue3": "^3.1.11",
+    "vue": "^3.4.21",
+    "vuepress": "2.0.0-rc.8",
+    "vuepress-plugin-components": "2.0.0-rc.31",
+    "vuepress-plugin-search-pro": "2.0.0-rc.31",
+    "vuepress-theme-hope": "2.0.0-rc.31"
   }
 }

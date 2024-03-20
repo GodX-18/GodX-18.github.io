@@ -17,7 +17,7 @@ export default hopeTheme({
   // repo: "https://github.com/GodX-18",
 
   docsDir: "docs",
-
+  fullscreen: true,
   blog: {
     medias: {
       // Baidu: "https://example.com",
@@ -91,6 +91,23 @@ export default hopeTheme({
   plugins: {
     blog: true,
     copyright: true,
+    backToTop: {
+      /**
+       * 显示返回顶部按钮的滚动阈值距离（以像素为单位）
+       *
+       * @default 100
+       */
+      threshold: 500,
+      /**
+       * 是否显示滚动进度
+       *
+       * @default true
+       */
+      progress: true
+    },
+    prismjs: {
+      dark: "night-owl"
+    },
     comment: {
       provider: "Giscus",
       repo: "GodX-18/GodX-18.github.io",
@@ -101,10 +118,11 @@ export default hopeTheme({
     // all features are enabled for demo, only preserve features you need here
     mdEnhance: {
       align: true,
+      sandpack: true,
       attrs: true,
       chart: true,
       codetabs: true,
-      container: true,
+      hint: true,
       demo: true,
       echarts: true,
       figure: true,
@@ -114,13 +132,11 @@ export default hopeTheme({
       imgSize: true,
       include: true,
       katex: true,
+      revealJs: true,
       mark: true,
       mermaid: true,
       playground: {
         presets: ["ts", "vue"]
-      },
-      presentation: {
-        plugins: ["highlight", "math", "search", "notes", "zoom"]
       },
       stylize: [
         {
@@ -140,63 +156,42 @@ export default hopeTheme({
       tabs: true,
       vPre: true,
       vuePlayground: true
+    },
+    searchPro: {
+      // 索引全部内容
+      indexContent: true,
+      // 为分类和标签添加索引
+      customFields: [
+        {
+          getter: (page: any) => page.frontmatter.category,
+          formatter: "分类：$content"
+        },
+        {
+          getter: (page: any) => page.frontmatter.tag,
+          formatter: "标签：$content"
+        }
+      ]
+    },
+    components: {
+      // components: [
+      //   "ArtPlayer",
+      //   "VidStack",
+      //   "Badge",
+      //   "BiliBili",
+      //   "CodePen",
+      //   "FontIcon",
+      //   "PDF",
+      //   "Replit",
+      //   "Share",
+      //   "StackBlitz",
+      //   "SiteInfo",
+      //   "VPBanner",
+      //   "VPCard",
+      //   "VidStack",
+      //   "VidStack",
+      //   "XiGua",
+      //   "VidStack"
+      // ]
     }
-
-    // uncomment these if you want a PWA
-    // pwa: {
-    //   favicon: "/favicon.ico",
-    //   cacheHTML: true,
-    //   cachePic: true,
-    //   appendBase: true,
-    //   apple: {
-    //     icon: "/assets/icon/apple-icon-152.png",
-    //     statusBarColor: "black",
-    //   },
-    //   msTile: {
-    //     image: "/assets/icon/ms-icon-144.png",
-    //     color: "#ffffff",
-    //   },
-    //   manifest: {
-    //     icons: [
-    //       {
-    //         src: "/assets/icon/chrome-mask-512.png",
-    //         sizes: "512x512",
-    //         purpose: "maskable",
-    //         type: "image/png",
-    //       },
-    //       {
-    //         src: "/assets/icon/chrome-mask-192.png",
-    //         sizes: "192x192",
-    //         purpose: "maskable",
-    //         type: "image/png",
-    //       },
-    //       {
-    //         src: "/assets/icon/chrome-512.png",
-    //         sizes: "512x512",
-    //         type: "image/png",
-    //       },
-    //       {
-    //         src: "/assets/icon/chrome-192.png",
-    //         sizes: "192x192",
-    //         type: "image/png",
-    //       },
-    //     ],
-    //     shortcuts: [
-    //       {
-    //         name: "Demo",
-    //         short_name: "Demo",
-    //         url: "/demo/",
-    //         icons: [
-    //           {
-    //             src: "/assets/icon/guide-maskable.png",
-    //             sizes: "192x192",
-    //             purpose: "maskable",
-    //             type: "image/png",
-    //           },
-    //         ],
-    //       },
-    //     ],
-    //   },
-    // },
   }
 });

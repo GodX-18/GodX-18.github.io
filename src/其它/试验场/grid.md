@@ -1,6 +1,5 @@
 ---
 title: Grid 布局
-icon: define
 order: 1
 category:
   - 前端

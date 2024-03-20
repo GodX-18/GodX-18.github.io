@@ -99,6 +99,7 @@ myEvent.emit("message");
 
 * 适合于 IO 密集型高并发请求
 * Nodejs 做为中间层
+  
   ![image-20221226180224058](https://raw.githubusercontent.com/GodX-18/picBed/main/image-20221226180224058.png)
 
 * 操作数据库提供 API服务

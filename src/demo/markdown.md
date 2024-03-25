@@ -389,3 +389,13 @@ $$
 - [查看详情](https://theme-hope.vuejs.press/zh/guide/markdown/presentation.html)
 
 [md-enhance]: https://md-enhance.vuejs.press/zh/
+
+## 组件
+
+这是默认主题内置的 `<Badge />` 组件 <Badge text="演示" />
+
+这是自定义组件 `MyComponent` <MyComponent title="kkkk" />
+
+<script setup lang="ts">
+import MyComponent from "@source/demo/test.vue";
+</script>

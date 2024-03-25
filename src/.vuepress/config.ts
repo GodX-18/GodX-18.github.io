@@ -1,5 +1,4 @@
 import { defineUserConfig } from "vuepress";
-import { searchProPlugin } from "vuepress-plugin-search-pro";
 import { viteBundler } from "@vuepress/bundler-vite";
 
 import theme from "./theme.js";

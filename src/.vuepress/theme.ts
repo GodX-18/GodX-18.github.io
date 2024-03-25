@@ -13,7 +13,7 @@ export default hopeTheme({
 
   // iconAssets: "//at.alicdn.com/t/c/font_4285497_ypgc4kw8wq.css",
 
-  logo: "/long.png",
+  logo: "/s.svg",
   // repo: "https://github.com/GodX-18",
 
   docsDir: "docs",
@@ -117,6 +117,7 @@ export default hopeTheme({
     },
     // all features are enabled for demo, only preserve features you need here
     mdEnhance: {
+      component: true,
       align: true,
       sandpack: true,
       attrs: true,
@@ -173,25 +174,25 @@ export default hopeTheme({
       ]
     },
     components: {
-      // components: [
-      //   "ArtPlayer",
-      //   "VidStack",
-      //   "Badge",
-      //   "BiliBili",
-      //   "CodePen",
-      //   "FontIcon",
-      //   "PDF",
-      //   "Replit",
-      //   "Share",
-      //   "StackBlitz",
-      //   "SiteInfo",
-      //   "VPBanner",
-      //   "VPCard",
-      //   "VidStack",
-      //   "VidStack",
-      //   "XiGua",
-      //   "VidStack"
-      // ]
+      components: [
+        // "ArtPlayer",
+        // "VidStack",
+        "Badge",
+        // "BiliBili",
+        // "CodePen",
+        // "FontIcon",
+        // "PDF",
+        // "Replit",
+        // "Share",
+        // "StackBlitz",
+        // "SiteInfo",
+        // "VPBanner",
+        // "VPCard",
+        // "VidStack",
+        // "VidStack",
+        // "XiGua",
+        // "VidStack"
+      ]
     }
   }
 });

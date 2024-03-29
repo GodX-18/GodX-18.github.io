@@ -3,8 +3,7 @@ home: true
 layout: BlogHome
 icon: home
 title: Home
-# heroImage: /s.svg
-heroImage: /monkey.png
+heroImage: /sun.png
 bgImage: http://file.mo7.cc/api/public/bz
 heroText: 𝒢𝑜𝒹𝒳
 heroFullScreen: true

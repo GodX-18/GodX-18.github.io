@@ -1,6 +1,6 @@
 ---
 title: HTML
-icon: html
+icon: HTML
 date: 2023-05-22
 order: 1
 category:

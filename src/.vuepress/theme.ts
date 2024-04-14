@@ -9,9 +9,9 @@ export default hopeTheme({
     name: "GodX",
     url: "https://github.com/GodX-18"
   },
-  iconAssets: "iconfont",
+  // iconAssets: "iconfont", // 使用自带图标
 
-  // iconAssets: "//at.alicdn.com/t/c/font_4285497_ypgc4kw8wq.css",
+  iconAssets: "//at.alicdn.com/t/c/font_4285497_z93d1fjug6f.css",
 
   logo: "/s.svg",
   // repo: "https://github.com/GodX-18",
@@ -84,7 +84,8 @@ export default hopeTheme({
     config: {
       "/demo/encrypt.html": ["1234"],
       "/项目管理/PMP/解题思路.html": ["kang"],
-      "/项目管理/PMP/临门一脚.html": ["kang"]
+      "/项目管理/PMP/临门一脚.html": ["kang"],
+      "/面试/面试记录.html": ["980322"]
     }
   },
 
@@ -177,7 +178,7 @@ export default hopeTheme({
       components: [
         // "ArtPlayer",
         // "VidStack",
-        "Badge",
+        "Badge"
         // "BiliBili",
         // "CodePen",
         // "FontIcon",

@@ -1,6 +1,6 @@
 ---
 title: CSS
-icon: css
+icon: CSS
 date: 2023-05-22
 order: 2
 category:

@@ -24,6 +24,6 @@ title: 自我介绍
 
 - 微信
 
-  ![](https://raw.githubusercontent.com/GodX-18/picBed/main/image-20240414151638184.png)
+  <img src="https://img2.imgtp.com/2024/04/14/KdA3XWIL.png" alt="wx" style="zoom:50%;" />
 
 我期待着与您的交流和合作！

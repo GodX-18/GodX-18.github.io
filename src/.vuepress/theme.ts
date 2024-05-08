@@ -11,7 +11,7 @@ export default hopeTheme({
   },
   // iconAssets: "iconfont", // 使用自带图标
 
-  iconAssets: "//at.alicdn.com/t/c/font_4285497_z93d1fjug6f.css",
+  iconAssets: "//at.alicdn.com/t/c/font_4285497_ejbhhhyfjyj.css",
 
   logo: "/s.svg",
   // repo: "https://github.com/GodX-18",
@@ -194,6 +194,6 @@ export default hopeTheme({
         // "XiGua",
         // "VidStack"
       ]
-    }
+    },
   }
 });

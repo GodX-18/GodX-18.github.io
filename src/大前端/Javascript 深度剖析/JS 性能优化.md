@@ -452,7 +452,7 @@ function fn() {
 ----
 
 * 本质上就是采集大量的执行样本进行数学统计和分析
-* 使用基于 Benchmark.js 的 https://jsperf.com/ 完成
+* 使用基于 Benchmark.js 的 https://jsperf.app/ 完成
 
 ### **Jsperf使用流程(官网已经停止维护)**
 

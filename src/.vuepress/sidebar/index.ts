@@ -8,5 +8,6 @@ export const zhSidebar = sidebar({
   "/面试/": "structure",
   "/语言/": "structure",
   "/项目管理/": "structure",
+  "/NPDP/": "structure",
   "/其它/": "structure"
 });

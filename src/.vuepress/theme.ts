@@ -11,7 +11,7 @@ export default hopeTheme({
   },
   // iconAssets: "iconfont", // 使用自带图标
 
-  iconAssets: "//at.alicdn.com/t/c/font_4285497_ejbhhhyfjyj.css",
+  iconAssets: "//at.alicdn.com/t/c/font_4285497_9hedaki2cq.css",
 
   logo: "/s.svg",
   // repo: "https://github.com/GodX-18",

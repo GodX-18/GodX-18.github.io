@@ -8,6 +8,7 @@ export const zhNavbar = navbar([
   { text: "面试", icon: "interview", link: "/面试/HTML" },
   { text: "语言", icon: "duoyuyan", prefix: "/语言/", children: ["TypeScript/"] },
   { text: "项目管理", icon: "xiangmuguanli", link: "/项目管理/index.html" },
+  { text: "NPDP", icon: "chanpinjingli", link: "/NPDP/index.html" },
   { text: "其它", icon: "qita", prefix: "/其它/", children: ["设计模式/", "试验场/"] }
   // {
   //   text: "V2 文档",

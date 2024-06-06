@@ -9,7 +9,7 @@ export const zhNavbar = navbar([
   { text: "语言", icon: "duoyuyan", prefix: "/语言/", children: ["TypeScript/"] },
   { text: "项目管理", icon: "xiangmuguanli", link: "/项目管理/index.html" },
   { text: "NPDP", icon: "chanpinjingli", link: "/NPDP/index.html" },
-  { text: "健身", icon: "chanpinjingli", link: "/健身/" },
+  { text: "健身", icon: "jianshen", link: "/健身/" },
   { text: "其它", icon: "qita", prefix: "/其它/", children: ["设计模式/", "试验场/"] }
   // {
   //   text: "V2 文档",

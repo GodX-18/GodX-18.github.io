@@ -9,5 +9,6 @@ export const zhSidebar = sidebar({
   "/语言/": "structure",
   "/项目管理/": "structure",
   "/NPDP/": "structure",
-  "/其它/": "structure"
+  "/其它/": "structure",
+  "/健身/": "structure"
 });
